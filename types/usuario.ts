@@ -1,5 +1,7 @@
 /** @format */
 
+import { ICreateFuncionario, IFuncionario } from "./funcionario";
+
 export interface IUsuario {
 	id: string;
 	nome: string;
@@ -12,13 +14,15 @@ export interface IUsuario {
 	criadoEm: Date;
 	atualizadoEm: Date;
 	nomeSocial?: string;
+	estagiario: boolean;
+	codigoUnidade: string;
+	funcionario?: IFuncionario;
 }
 
 export enum IPermissao {
 	DEV,
-	TEC,
 	ADM,
-	USR,
+	USR
 }
 
 export interface ICreateUsuario {
@@ -29,6 +33,15 @@ export interface ICreateUsuario {
 	permissao?: IPermissao;
 	status?: boolean;
 	nomeSocial?: string;
+	estagiario: boolean;
+	codigoUnidade: string;
+	funcionario?: {
+		rf: string;
+		vinculo: string;
+		nomeCargo: string;
+		refCargo: string;
+		observacao?: string;
+	}
 }
 
 export interface IUpdateUsuario {
@@ -37,6 +50,14 @@ export interface IUpdateUsuario {
 	nomeSocial?: string;
 	avatar?: string;
 	permissao?: IPermissao;
+	estagiario?: boolean;
+	codigoUnidade?: string;
+	funcionario?: {
+		vinculo?: string;
+		nomeCargo?: string;
+		refCargo?: string;
+		observacao?: string;
+	}
 }
 
 export interface IPaginadoUsuario {
@@ -52,11 +73,6 @@ export interface INovoUsuario {
 	email: string;
 }
 
-export interface IUsuarioTecnico {
-	id: string;
-	nome: string;
-}
-
 export interface IRespostaUsuario {
 	ok: boolean;
 	error: string | null;
@@ -64,7 +80,6 @@ export interface IRespostaUsuario {
 		| INovoUsuario
 		| IUsuario
 		| IUsuario[]
-		| IUsuarioTecnico[]
 		| IPaginadoUsuario
 		| { autorizado: boolean }
 		| { desativado: boolean }
@@ -79,6 +94,8 @@ export interface IUsuarioSession {
 	email: string;
 	nomeSocial?: string;
 	permissao: IPermissao;
+	estagiario: boolean;
+	codigoUnidade: string;
 	status: number;
 	avatar?: string;
 	iat: number;
