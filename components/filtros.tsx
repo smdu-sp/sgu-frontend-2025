@@ -58,6 +58,7 @@ export function Filtros({ camposFiltraveis }: FiltrosProps) {
 
 	useEffect(() => {
 		atualizaFiltros();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -233,6 +234,7 @@ export function Filtros({ camposFiltraveis }: FiltrosProps) {
 			const datas = paramUpdate && paramUpdate !== '' ? paramUpdate.split(',') : ['', ''];
 			const [from, to] = verificaData(datas[0], datas[1]);
 			setDate(datas[0] !== '' && datas[1] !== '' ? { from, to } : undefined);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, [searchParams]);
 
 		return (

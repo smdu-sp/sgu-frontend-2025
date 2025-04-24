@@ -5,7 +5,6 @@
 import { auth } from '@/lib/auth/auth';
 import { ICargaSigpec } from '@/types/carga-sigpec';
 import { IRespostaUsuario } from '@/types/usuario';
-import { revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 export async function importar(
@@ -22,15 +21,15 @@ export async function importar(
 		{
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
 				Authorization: `Bearer ${session?.access_token}`,
 			},
-			body: JSON.stringify(data),
+			body: data,
 		},
 	);
+
 	const dataResponse = await response.json();
 	if (response.status === 201) {
-		revalidateTag('users');
+		// revalidateTag('users');
 		return {
 			ok: true,
 			error: null,
