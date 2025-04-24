@@ -1,6 +1,11 @@
 /** @format */
 
-import { ChevronRight, House, LucideProps, Users } from 'lucide-react';
+import {
+	ChevronRight,
+	House,
+	LucideProps,
+	Users
+} from 'lucide-react';
 
 import {
 	Collapsible,

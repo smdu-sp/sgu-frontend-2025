@@ -8,7 +8,7 @@ import * as usuario from '@/services/usuarios';
 import { IPaginadoUsuario, IUsuario } from '@/types/usuario';
 import { Suspense } from 'react';
 import { columns } from './_components/columns';
-import ModalUpdateAndCreate from './_components/modal-update-create';
+import DropDownUser from './_components/dropDown-user';
 
 export default async function UsuariosSuspense({
 	searchParams,
@@ -128,7 +128,7 @@ async function Usuarios({
 				)}
 			</div>
 			<div className='absolute bottom-10 md:bottom-5 right-2 md:right-8 hover:scale-110'>
-				<ModalUpdateAndCreate isUpdating={false} />
+				<DropDownUser />
 			</div>
 		</div>
 	);

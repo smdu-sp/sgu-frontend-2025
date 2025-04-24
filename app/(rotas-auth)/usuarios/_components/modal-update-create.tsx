@@ -22,14 +22,17 @@ export default function ModalUpdateAndCreate({
 }) {
 	return (
 		<Dialog>
-			<DialogTrigger asChild>
+			<DialogTrigger
+				asChild
+				onClick={(e) => {
+					e.stopPropagation(); // <- Isso evita que o Dropdown feche
+				}}>
 				<Button
-					size={'icon'}
 					variant={'outline'}
 					className={`${
 						isUpdating
 							? 'bg-background hover:bg-primary '
-							: 'bg-primary hover:bg-primary hover:opacity-70'
+							: 'bg-primary w-full hover:bg-primary hover:opacity-70'
 					} group transition-all ease-linear duration-200`}>
 					{isUpdating ? (
 						<SquarePen
@@ -37,10 +40,13 @@ export default function ModalUpdateAndCreate({
 							className='text-primary group-hover:text-white group'
 						/>
 					) : (
-						<Plus
-							size={28}
-							className='text-white group'
-						/>
+						<p className='text-white group flex items-center gap-2'>
+							Adicionar Usuário
+							<Plus
+								size={28}
+								className='text-white group'
+							/>
+						</p>
 					)}
 				</Button>
 			</DialogTrigger>

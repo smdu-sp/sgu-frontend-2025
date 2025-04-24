@@ -1,6 +1,7 @@
 /** @format */
 
-import { ICreateFuncionario, IFuncionario } from "./funcionario";
+import { ICargaSigpec } from './carga-sigpec';
+import { IFuncionario } from './funcionario';
 
 export interface IUsuario {
 	id: string;
@@ -22,7 +23,7 @@ export interface IUsuario {
 export enum IPermissao {
 	DEV,
 	ADM,
-	USR
+	USR,
 }
 
 export interface ICreateUsuario {
@@ -41,7 +42,7 @@ export interface ICreateUsuario {
 		nomeCargo: string;
 		refCargo: string;
 		observacao?: string;
-	}
+	};
 }
 
 export interface IUpdateUsuario {
@@ -57,7 +58,7 @@ export interface IUpdateUsuario {
 		nomeCargo?: string;
 		refCargo?: string;
 		observacao?: string;
-	}
+	};
 }
 
 export interface IPaginadoUsuario {
@@ -83,6 +84,7 @@ export interface IRespostaUsuario {
 		| IPaginadoUsuario
 		| { autorizado: boolean }
 		| { desativado: boolean }
+		| ICargaSigpec[]
 		| null;
 	status: number;
 }
